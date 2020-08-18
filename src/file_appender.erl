@@ -16,8 +16,8 @@ start(FilePath, ConfigMap) ->
 
 parse_conf(FileName) ->
   {ok, CurrentDir} = file:get_cwd(),
-  Conf_path = CurrentDir ++ "/resources/" ++ FileName,
-  case file:consult(Conf_path) of
+  ConfPath = CurrentDir ++ "/resources/" ++ FileName,
+  case file:consult(ConfPath) of
     {ok, Conf} ->
       {_, {_, Value}} = keysearch(termination_interval_ms, 1, Conf),
       Interval = case to_integer(Value) of
@@ -49,7 +49,7 @@ appender(FilePath, FHandle, Conf) ->
     terminate ->
       ok
   after Conf#config.termination_interval ->
-    Interval_in_seconds = Conf#config.termination_interval div 1000,
-    io:fwrite("file appender for file: ~p\n has not received messages for ~p seconds. shutting down.\n", [FilePath, Interval_in_seconds]),
+    IntervalInSeconds = Conf#config.termination_interval div 1000,
+    io:fwrite("file appender for file: ~p\n has not received messages for ~p seconds. shutting down.\n", [FilePath, IntervalInSeconds]),
     timeout
   end.

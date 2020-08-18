@@ -1,5 +1,6 @@
 -module(file_appender_tests).
 -import(string, [len/1]).
+-import(utils, [read_lines/1, get_root_path/0]).
 -include("config.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
@@ -8,7 +9,8 @@ reading_missing_config_file_returns_default_config_test() ->
   ?assert(Conf#config.termination_interval =:= 5000).
 
 appending_lines_to_file_appender_causing_the_file_to_be_written_test() ->
-  FilePath = "C:\\Users\\Home\\Desktop\\erlang\\file1.txt",
+  Path = get_root_path(),
+  FilePath = Path ++ "/file1.txt",
   file:delete(FilePath),
   Pid = file_appender:start(FilePath),
   file_appender:append_line(Pid, "1"),
@@ -21,7 +23,8 @@ appending_lines_to_file_appender_causing_the_file_to_be_written_test() ->
   ?assert(len(Lines) =:= 5).
 
 appending_lines_to_file_appender_with_or_without_line_feed_returns_the_correct_number_of_inputs_test() ->
-  FilePath = "C:\\Users\\Home\\Desktop\\erlang\\file2.txt",
+  Path = get_root_path(),
+  FilePath = Path ++ "/file2.txt",
   file:delete(FilePath),
   Pid = file_appender:start(FilePath),
   file_appender:append_line(Pid, "1\n"),
@@ -32,9 +35,3 @@ appending_lines_to_file_appender_with_or_without_line_feed_returns_the_correct_n
   {ok, Fh} = file:open(FilePath, [read]),
   Lines = read_lines(Fh),
   ?assert(len(Lines) =:= 5).
-
-read_lines(Fn) ->
-  case io:get_line(Fn, "") of
-    eof -> [];
-    Line -> [Line | read_lines(Fn)]
-  end.
