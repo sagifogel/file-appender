@@ -1,17 +1,17 @@
 -module(file_appender).
 -import(string, [concat/2, to_integer/1, right/2]).
 -import(lists, [keysearch/3]).
--export([start/1, appender/3, append_line/2, read_conf/1]).
--record(config, {termination_interval = 0}).
+-export([start/1, appender/3, append_line/2, parse_conf/1]).
+-include("config.hrl").
 
 start(FilePath) ->
-  Conf = read_conf("app.config"),
+  Conf = parse_conf("app.config"),
   case file:open(FilePath, [append]) of
     {ok, Fn} -> spawn(fun() -> appender(FilePath, Fn, Conf) end);
     {error, err_value} -> io:fwrite("could not open file ~p. ~p", [FilePath, err_value])
   end.
 
-read_conf(FileName) ->
+parse_conf(FileName) ->
   {ok, CurrentDir} = file:get_cwd(),
   Conf_path = CurrentDir ++ "/resources/" ++ FileName,
   case file:consult(Conf_path) of

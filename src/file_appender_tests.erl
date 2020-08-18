@@ -1,5 +1,6 @@
 -module(file_appender_tests).
 -import(string, [len/1]).
+-include("config.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
 appending_lines_to_file_appender_causing_the_file_to_be_written_test() ->

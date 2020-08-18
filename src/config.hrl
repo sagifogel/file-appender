@@ -1,0 +1,1 @@
+-record(config, {termination_interval = 0}).
