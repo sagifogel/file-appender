@@ -1,11 +1,14 @@
 -module(file_appender).
 -import(string, [concat/2, to_integer/1, right/2]).
 -import(lists, [keysearch/3]).
--export([start/1, appender/3, append_line/2, parse_conf/1]).
+-export([start/1, start/2, appender/3, append_line/2, parse_conf/1]).
 -include("config.hrl").
 
 start(FilePath) ->
-  Conf = parse_conf("app.config"),
+  start(FilePath, #{ }).
+
+start(FilePath, ConfigMap) ->
+  Conf = parse_conf(maps:get(conf, ConfigMap, "app.config")),
   case file:open(FilePath, [append]) of
     {ok, Fn} -> spawn(fun() -> appender(FilePath, Fn, Conf) end);
     {error, err_value} -> io:fwrite("could not open file ~p. ~p", [FilePath, err_value])
