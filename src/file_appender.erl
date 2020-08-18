@@ -40,7 +40,8 @@ appender(FilePath, FHandle, Conf) ->
 
       case string:right(Line, 1) of
         "\n" -> file:write(FHandle, Line);
-        _ -> file:write(FHandle, concat(Line, "\n"))
+        _ -> file:write(FHandle, concat(Line, "\n")),
+          appender(FilePath, FHandle, Conf)
       end;
     terminate ->
       ok
