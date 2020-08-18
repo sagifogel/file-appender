@@ -3,6 +3,10 @@
 -include("config.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
+reading_missing_config_file_returns_default_config_test() ->
+  Conf = file_appender:parse_conf("missing.config"),
+  ?assert(Conf#config.termination_interval =:= 5000).
+
 appending_lines_to_file_appender_causing_the_file_to_be_written_test() ->
   FilePath = "C:\\Users\\Home\\Desktop\\erlang\\file1.txt",
   file:delete(FilePath),
