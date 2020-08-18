@@ -14,14 +14,18 @@ start(FilePath) ->
 read_conf() ->
   {ok, CurrentDir} = file:get_cwd(),
   Conf_path = concat(CurrentDir, "/resources/app.config"),
-
-  {ok, Conf} = file:consult(Conf_path),
-  {_, {_, Value}} = keysearch(termination_interval_ms, 1, Conf),
-  Interval = case to_integer(Value) of
-               {error, no_integer} -> 10000;
-               {ParsedInterval, _} -> ParsedInterval
-             end,
-  #config{termination_interval = Interval}.
+  case file:consult(Conf_path) of
+    {ok, Conf} ->
+      {_, {_, Value}} = keysearch(termination_interval_ms, 1, Conf),
+      Interval = case to_integer(Value) of
+                   {error, no_integer} -> 10000;
+                   {ParsedInterval, _} -> ParsedInterval
+                 end,
+      #config{termination_interval = Interval};
+    {error, _} ->
+      io:fwrite("could not find configuration file, using default configuration"),
+      #config{termination_interval = 10000}
+  end.
 
 append_line(Pid, Line) ->
   Pid ! {self(), {append, Line}},
@@ -42,6 +46,6 @@ appender(FilePath, FHandle, Conf) ->
       ok
   after Conf#config.termination_interval ->
     Interval_in_seconds = Conf#config.termination_interval div 1000,
-    io:fwrite("file appender for file ~p\n has not received messages for ~p seconds. shutting down.\n", [FilePath, Interval_in_seconds]),
+    io:fwrite("file appender for file: ~p\n has not received messages for ~p seconds. shutting down.\n", [FilePath, Interval_in_seconds]),
     timeout
   end.
