@@ -1,3 +1,4 @@
+
 .eunit
 *.o
 *.beam
@@ -15,3 +16,7 @@ deps
 .rebar3
 _build/
 _checkouts/
+
+# intellij
+.idea
+*.iml
