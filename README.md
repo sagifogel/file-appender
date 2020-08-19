@@ -11,7 +11,7 @@ should exist and should contain a key/value pair of:
 ```
 {termination_interval_ms, "{interval in milliseconds}"}.
 ```  
-By default the expected configuration file name should be `app.config`, although the app<br/>
+By default, the expected configuration file name should be `app.config`, although the app<br/>
 allows to override the default name.<br/>
 In case the file would not be found, the default configuration of 5 seconds will be used.
 
@@ -55,7 +55,7 @@ In case your input contains line feed `\n` at the end, it will not emit a line f
 ```erlang
  erlc -pa {path to the root directory}  {path to the root directory}/src/utils.erl 
  {path to the root directory}/src/file_appender.erl 
- {path to the root directory}/src/file_appender_tests.erl`
+ {path to the root directory}/src/file_appender_tests.erl
 ```
 
 ### Running:
@@ -65,7 +65,7 @@ In case your input contains line feed `\n` at the end, it will not emit a line f
     - cd {path to the root directory}
     - `erl -pa {path to the root directory}//out/production/file-appender -pa {path to the root directory}/file-appender`
     - Use the [API](https://github.com/sagifogel/file-appender#API)
-- Via IDEA: 
+- Via Intellij: 
     - Load the project
     - Go to "Project Structure" -> "Modules"
     - Remove the current file-appender module using the minus sign.
@@ -88,7 +88,7 @@ In case your input contains line feed `\n` at the end, it will not emit a line f
    - cd {path to the root directory}
    - `erl -pa {path to the root directory}/out -pa {path to the root directory}`
    -  `file_appender_tests:test().`
-- Via IDEA:
+- Via Intellij:
    - Find the file `file_appender_tests.erl`
-    4. Right click -> Create 'file_appender_tests'... -> Ok
-    5. Run using the play button
+   - Right click -> Create 'file_appender_tests'... -> Ok
+   - Run using the play button
