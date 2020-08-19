@@ -53,16 +53,17 @@ In case your input contains line feed `\n` at the end, it will not emit a line f
     - cd out 
     ```erlang
      erlc -pa {path to the root directory}  {path to the root directory}/src/utils.erl 
-     {path to the root directory}/src/file_appender.erl {path to the root directory}/src/file_appender_tests.erl`
+     {path to the root directory}/src/file_appender.erl 
+     {path to the root directory}/src/file_appender_tests.erl`
     ```
 
 ### Running:
 
 - Via erl:
-    - [Compiling via erlc](https://github.com/sagifogel/file-appender#compiling-via-erlc/)
+    - [Compiling via erlc](https://github.com/sagifogel/file-appender#compiling-via-erlc)
     - cd {path to the root directory}
     - `erl -pa {path to the root directory}//out/production/file-appender -pa {path to the root directory}/file-appender`
-    - Use the [API](https://github.com/sagifogel/file-appender#API/)
+    - Use the [API](https://github.com/sagifogel/file-appender#API)
 - Via IDEA: 
     - Load the project
     - Go to "Project Structure" -> "Modules"
@@ -82,7 +83,7 @@ In case your input contains line feed `\n` at the end, it will not emit a line f
 ### Testing:
 
 - Via erl
-   - [Compiling via erlc](https://github.com/sagifogel/file-appender#compiling-via-erlc/)
+   - [Compiling via erlc](https://github.com/sagifogel/file-appender#compiling-via-erlc)
    - cd {path to the root directory}
    - `erl -pa {path to the root directory}/out -pa {path to the root directory}`
    -  `file_appender_tests:test().`
