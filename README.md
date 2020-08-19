@@ -46,10 +46,22 @@ In case your input contains line feed `\n` at the end, it will not emit a line f
 2. [rebar3](https://www.rebar3.org/)
 3. [Erlang intellij plugin](https://plugins.jetbrains.com/plugin/7083-erlang) in case you intend to run the code in intellij
 
+### Compiling via erlc:
+
+    - cd {path to the root directory}
+    - mkdir out
+    - cd out 
+    ```erlang
+     erlc -pa {path to the root directory}  {path to the root directory}/src/utils.erl 
+     {path to the root directory}/src/file_appender.erl {path to the root directory}/src/file_appender_tests.erl`
+    ```
+
 ### Running:
 
-- Via erl: 
-    - Compile using `erl file_appender.erl`
+- Via erl:
+    - [Compiling via erlc](https://github.com/sagifogel/file-appender#compiling-via-erlc/)
+    - cd {path to the root directory}
+    - `erl -pa {path to the root directory}//out/production/file-appender -pa {path to the root directory}/file-appender`
     - Use the [API](https://github.com/sagifogel/file-appender#API/)
 - Via IDEA: 
     - Load the project
@@ -66,3 +78,15 @@ In case your input contains line feed `\n` at the end, it will not emit a line f
     - Enter `file-appender-console` in the `Name` -> Ok
     - Push the Play button
     - Use the [API](https://github.com/sagifogel/file-appender#API/)
+    
+### Testing:
+
+- Via erl
+   - [Compiling via erlc](https://github.com/sagifogel/file-appender#compiling-via-erlc/)
+   - cd {path to the root directory}
+   - `erl -pa {path to the root directory}/out -pa {path to the root directory}`
+   -  `file_appender_tests:test().`
+- Via IDEA:
+   - Find the file `file_appender_tests.erl`
+    4. Right click -> Create 'file_appender_tests'... -> Ok
+    5. Run using the play button
