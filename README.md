@@ -1,19 +1,19 @@
 # file-appender
 
 The file-appender receives a file path, to which it will append lines.<br/>
-If the file-appender won't be used for a specific interval of time, it will flush the<br/> 
-file, and no longer be available for use.
+If the file-appender isn't used for a specific interval of time, it flushes the<br/> 
+file, and is no longer available.
     
 ### Resources
 
-In order to set the interval for non usage, a configuration file in the `resources` directory<br/>
-should exist and should contain a key/value pair of:
+In order to set the interval for 'non usage', a configuration file in the `resources` directory<br/>
+should exist and contain a key/value pair of:
 ```
 {termination_interval_ms, "{interval in milliseconds}"}.
 ```  
 By default, the expected configuration file name should be `app.config`, although the app<br/>
-allows to override the default name.<br/>
-In case the file would not be found, the default configuration of 5 seconds will be used.
+allows the default name to be overriden.<br/>
+If the file isn't found, the default '5 seconds' configuration, is invoked.
 
 ### API
 
@@ -24,7 +24,7 @@ Pid = file_appender.start("{absolute path of the file}").
 ```
 
 You can also call an overloaded version of `start` which contains another parameter of type Map.<br/>
-The map should be used to change the default configuration file if needed.
+The map should be used to change the default configuration file, if needed.
 
 ```erlang
 Pid = file_appender.start("{absolute path of the file}", #{ conf => "{other confg absolute file path}" }).
@@ -36,7 +36,8 @@ and then you can call the `append_line` method:
 file_appender.append_line(Pid, "{your desired line}").
 ``` 
 
-Please note that you don't need to use the line feed `\n` in your input, the file-appender will do it for you.<br/> 
+Please note that you don't need to use the line feed `\n` in your input.
+The file-appender will do it for you.<br/> 
 In case your input contains line feed `\n` at the end, it will not emit a line feed for this input.    
 
 
