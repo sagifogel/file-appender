@@ -48,14 +48,15 @@ In case your input contains line feed `\n` at the end, it will not emit a line f
 
 ### Compiling via erlc:
 
-    - cd {path to the root directory}
-    - mkdir out
-    - cd out 
-    ```erlang
-     erlc -pa {path to the root directory}  {path to the root directory}/src/utils.erl 
-     {path to the root directory}/src/file_appender.erl 
-     {path to the root directory}/src/file_appender_tests.erl`
-    ```
+- cd {path to the root directory}
+- mkdir out
+- cd out 
+    
+```erlang
+ erlc -pa {path to the root directory}  {path to the root directory}/src/utils.erl 
+ {path to the root directory}/src/file_appender.erl 
+ {path to the root directory}/src/file_appender_tests.erl`
+```
 
 ### Running:
 
