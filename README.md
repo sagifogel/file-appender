@@ -27,7 +27,7 @@ You can also call an overloaded version of `start` which contains another parame
 The map should be used to change the default configuration file, if needed.
 
 ```erlang
-Pid = file_appender.start("{absolute path of the file}", #{ conf => "{other confg absolute file path}" }).
+Pid = file_appender.start("{absolute path of the file}", #{ conf => "{other config absolute file path}" }).
 ```  
 
 and then you can call the `append_line` method:
@@ -64,7 +64,7 @@ In case your input contains line feed `\n` at the end, it will not emit a line f
 - Via erl:
     - [Compiling via erlc](https://github.com/sagifogel/file-appender#compiling-via-erlc)
     - cd {path to the root directory}
-    - `erl -pa {path to the root directory}//out/production/file-appender -pa {path to the root directory}/file-appender`
+    - `erl -pa {path to the root directory}/out -pa {path to the root directory}`
     - Use the [API](https://github.com/sagifogel/file-appender#API)
 - Via Intellij: 
     - Load the project
@@ -75,7 +75,7 @@ In case your input contains line feed `\n` at the end, it will not emit a line f
     - Choose the Project SDK
     - In the new module window enter these values:
         - Module Name - file-appender
-        - Content root - current directory - {path}\file-appender for example `C:\sagi\github\file-appender`
+        - Content root - current directory - {path}\file-appender for example `C:/sagi/github/file-appender`
         - Module file location - same as Content root
     - Select the `Add Configuration` tool -> push `+` sign to add a new app -> Erlang Console
     - Enter `file-appender-console` in the `Name` -> Ok
