@@ -45,7 +45,7 @@ In case your input contains line feed `\n` at the end, it will not emit a line f
 
 1. [OTP 23](https://www.erlang.org/downloads)
 2. [rebar3](https://www.rebar3.org/)
-3. [Erlang intellij plugin](https://plugins.jetbrains.com/plugin/7083-erlang) in case you intend to run the code in intellij
+3. [Erlang Intellij plugin](https://plugins.jetbrains.com/plugin/7083-erlang) in case you intend to run the code in intellij
 
 ### Compiling via erlc:
 
@@ -75,11 +75,11 @@ In case your input contains line feed `\n` at the end, it will not emit a line f
     - Choose the Project SDK
     - In the new module window enter these values:
         - Module Name - file-appender
-        - Content root - current directory - {path}\file-appender for example `C:/sagi/github/file-appender`
+        - Content root - current directory - {path}/file-appender for example `C:/sagi/github/file-appender`
         - Module file location - same as Content root
     - Select the `Add Configuration` tool -> push `+` sign to add a new app -> Erlang Console
     - Enter `file-appender-console` in the `Name` -> Ok
-    - Push the Play button
+    - Push the play button
     - Use the [API](https://github.com/sagifogel/file-appender#API/)
     
 ### Testing:
