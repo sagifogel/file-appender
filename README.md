@@ -20,20 +20,20 @@ If the file isn't found, the default '5 seconds' configuration, is invoked.
 In order to use the file-appender you need to call the `start` method:
 
 ```erlang
-Pid = file_appender.start("{absolute path of the file}").
+Pid = file_appender:start("{absolute path of the file}").
 ```
 
 You can also call an overloaded version of `start` which contains another parameter of type Map.<br/>
 The map should be used to change the default configuration file, if needed.
 
 ```erlang
-Pid = file_appender.start("{absolute path of the file}", #{ conf => "{other config absolute file path}" }).
+Pid = file_appender:start("{absolute path of the file}", #{ conf => "{other config absolute file path}" }).
 ```  
 
 and then you can call the `append_line` method:
 
 ```erlang
-file_appender.append_line(Pid, "{your desired line}").
+file_appender:append_line(Pid, "{your desired line}").
 ``` 
 
 Please note that you don't need to use the line feed `\n` in your input.
